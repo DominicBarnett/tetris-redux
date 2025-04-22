@@ -16,7 +16,16 @@
   --border-width: 5px;
   --cols: 10;
 }
-
+.App-title {
+  background-color: var(--bg-color);
+  border-color: var(--border-color);
+  border-width: var(--border-width);
+  border-style: solid;
+  border-left-color: var(--border-left-color);
+  border-top-color: var(--border-top-color);
+  border-right-color: var(--border-right-color);
+  border-bottom-color: var(--border-bottom-color);
+}
 .color-0 { background-color: var(--color-0); }
 .color-1 { background-color: var(--color-1); }
 .color-2 { background-color: var(--color-2); }
@@ -35,4 +44,15 @@
   border-top-color: var(--border-top-color);
   border-right-color: var(--border-right-color);
   border-bottom-color: var(--border-bottom-color);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.grid-board {
+  display: grid;
+  grid-template-columns: repeat(var(--cols), var(--tile-size));
+  grid-gap: 0;
+  align-self: flex-start;
 }
