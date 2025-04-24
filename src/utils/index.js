@@ -172,3 +172,36 @@ export const defaultState = () => {
       gameOver: false
     };
   };
+
+  // Return the next rotation index for a shape
+export const nextRotation = (shape, rotation) => {
+    return (rotation + 1) % shapes[shape].length;
+  };
+  
+  // Check if a shape can move to x, y with a given rotation
+  export const canMoveTo = (shape, grid, x, y, rotation) => {
+    const currentShape = shapes[shape][rotation];
+  
+    for (let row = 0; row < currentShape.length; row++) {
+      for (let col = 0; col < currentShape[row].length; col++) {
+        if (currentShape[row][col] !== 0) {
+          const proposedX = col + x;
+          const proposedY = row + y;
+  
+          if (proposedY < 0) continue;
+  
+          const possibleRow = grid[proposedY];
+  
+          if (
+            !possibleRow ||
+            possibleRow[proposedX] === undefined ||
+            possibleRow[proposedX] !== 0
+          ) {
+            return false;
+          }
+        }
+      }
+    }
+  
+    return true;
+  };
